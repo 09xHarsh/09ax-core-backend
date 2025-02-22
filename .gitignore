@@ -1,0 +1,60 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+.log/
+debug.log*
+error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env*.local
+
+# Compiled TypeScript files
+dist/
+build/
+*.tsbuildinfo
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+*.pdb
+*.db-wal
+*.db-shm
+*.tgz
+
+# Process IDs
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Temporary files
+tmp/
+temp/
+.cache/
+.nyc_output/
+coverage/
