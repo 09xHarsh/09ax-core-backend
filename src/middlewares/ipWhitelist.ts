@@ -10,16 +10,21 @@ export const ipWhitelistMiddleware = (
   res: Response,
   next: NextFunction,
 ) => {
-  const clientIp = req.ip || req.socket.remoteAddress;
+  let clientIp =
+    (req.headers["x-forwarded-for"] as string) ||
+    req.ip ||
+    req.socket.remoteAddress;
 
   if (!clientIp) {
     ResponseHelper.error({ res, name: "FORBIDDEN" });
     return;
   }
 
-  const normalizedIp = clientIp.includes("::ffff:")
-    ? clientIp.split("::ffff:")[1]
-    : clientIp;
+  if (clientIp.includes(",")) {
+    clientIp = clientIp.split(",")[0].trim();
+  }
+
+  const normalizedIp = clientIp.replace(/^::ffff:/, "");
   if (!WHITELISTED_IPS.has(normalizedIp)) {
     ResponseHelper.error({ res, name: "FORBIDDEN" });
     return;

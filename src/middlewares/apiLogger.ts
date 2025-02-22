@@ -5,9 +5,13 @@ import logger from "../utils/logger";
 const requestLogger = (req: Request, res: Response, next: NextFunction) => {
   const startTime = Date.now();
   const requestId = uuidv4();
+  const clientIp = Array.isArray(req.headers["x-forwarded-for"])
+    ? req.headers["x-forwarded-for"][0].trim()
+    : (req.headers["x-forwarded-for"] as string)?.split(",")[0].trim() ||
+      req.ip;
 
   logger.info(
-    `[REQUEST] ${requestId} ${req.ip} -method: ${req.method} -url: ${
+    `[REQUEST] ${requestId} ${clientIp} -method: ${req.method} -url: ${
       req.originalUrl
     } -headers: ${JSON.stringify(req.headers)} body: ${JSON.stringify(
       req.body,
