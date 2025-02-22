@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import logger from "./utils/logger";
 import ResponseHelper from "./helpers/response";

@@ -6,9 +6,9 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "scripts": {
-    "dev": "node -r ts-node/register --env-file=.env --watch src/index.ts",
+    "dev": "node -r ts-node/register --watch src/index.ts",
     "build": "tsc --project tsconfig.json",
-    "start": "node --env-file=.env dist/index.js",
+    "start": "node dist/index.js",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "prepare": "husky"
@@ -26,6 +26,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "uuid": "^11.1.0",
     "winston": "^3.17.0",
